@@ -1,10 +1,20 @@
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Neon.Web;
 using Neon.Web.Data;
 using Serilog;
 using Serilog.Events;
 
 var builder = WebApplication.CreateBuilder(args);
+
+//Autofac
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder =>
+{
+    containerBuilder.RegisterModule(new WebModule());
+});
 
 //Serilog
 builder.Host.UseSerilog((ctx, lc) => lc
