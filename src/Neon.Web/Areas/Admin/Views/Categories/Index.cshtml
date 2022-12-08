@@ -1,0 +1,37 @@
+﻿@model Neon.Web.Areas.Admin.Models.CategoryModels.CategoryListModel
+@{
+    ViewData["Title"] = "Index";
+    var count = 1;
+}
+
+<h1>Index</h1>
+
+<div class="container-fluid">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Title</th>
+          <th scope="col">Decsription</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+        <tbody>
+            @if (Model.CategoryList.Count > 0)
+            {
+                foreach(var item in Model.CategoryList)
+                {
+                    <tr>
+                        <td>@(count++)</td>
+                        <td>@item.Title</td>
+                        <td>@item.Description</td>
+                        <td>
+                            <a class="btn btn-link" asp-area="Admin" asp-controller="Categories" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                            <a class="btn btn-light" asp-area="Admin" asp-controller="Categories" asp-action="Delete" asp-route-id="@item.Id" >Remove</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
