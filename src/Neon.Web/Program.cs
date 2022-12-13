@@ -33,6 +33,18 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
+//Identity
+builder.Services.Configure<IdentityOptions>(
+    opts =>
+    {
+        opts.SignIn.RequireConfirmedEmail = false;
+    });
+
+builder.Services.ConfigureApplicationCookie(opt =>
+{
+    opt.LoginPath = new PathString("/account/signin");
+});
+
 try
 {
     var app = builder.Build();
