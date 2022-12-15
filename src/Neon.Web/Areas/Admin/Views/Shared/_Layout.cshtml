@@ -33,7 +33,8 @@
                         <li><a class="dropdown-item" href="#!">Settings</a></li>
                         <li><a class="dropdown-item" href="#!">Activity Log</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Logout</a></li>
+                    <li><a class="dropdown-item" href="javascript:void(0)" onclick="document.getElementById('logout').submit();">Logout</a></li>
+                        <form asp-area="" asp-controller="Account" asp-action="Signout" method="post" asp-antiforgery="true" id="logout"></form>
                     </ul>
                 </li>
             </ul>

@@ -33,6 +33,25 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
+//enforce route url to be in lowercase
+builder.Services.Configure<RouteOptions>(opt =>
+{
+    opt.LowercaseUrls = true;
+});
+
+//Identity
+builder.Services.Configure<IdentityOptions>(
+    opts =>
+    {
+        opts.SignIn.RequireConfirmedEmail = false;
+    });
+
+builder.Services.ConfigureApplicationCookie(opt =>
+{
+    opt.LoginPath = new PathString("/Account/Signin");
+    opt.AccessDeniedPath = new PathString("/AccessDenied");
+});
+
 try
 {
     var app = builder.Build();
@@ -43,11 +62,12 @@ try
     if (app.Environment.IsDevelopment())
     {
         app.UseMigrationsEndPoint();
+        //exception page
+        app.UseStatusCodePagesWithRedirects("/errors/{0}");
     }
     else
     {
         app.UseExceptionHandler("/Home/Error");
-        // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
         app.UseHsts();
     }
 
