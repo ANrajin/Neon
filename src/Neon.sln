@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neon.Web", "Neon.Web\Neon.Web.csproj", "{0676B310-AA1A-423C-BA2B-4B182A2BFC6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Neon.Web", "Neon.Web\Neon.Web.csproj", "{0676B310-AA1A-423C-BA2B-4B182A2BFC6A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
