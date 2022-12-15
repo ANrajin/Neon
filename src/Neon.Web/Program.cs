@@ -48,7 +48,8 @@ builder.Services.Configure<IdentityOptions>(
 
 builder.Services.ConfigureApplicationCookie(opt =>
 {
-    opt.LoginPath = new PathString("/account/signin");
+    opt.LoginPath = new PathString("/Account/Signin");
+    opt.AccessDeniedPath = new PathString("/AccessDenied");
 });
 
 try
@@ -61,11 +62,12 @@ try
     if (app.Environment.IsDevelopment())
     {
         app.UseMigrationsEndPoint();
+        //exception page
+        app.UseStatusCodePagesWithRedirects("/errors/{0}");
     }
     else
     {
         app.UseExceptionHandler("/Home/Error");
-        // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
         app.UseHsts();
     }
 
