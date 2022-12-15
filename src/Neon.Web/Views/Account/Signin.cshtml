@@ -1,7 +1,54 @@
-﻿
+﻿@model Neon.Web.Models.AccountModels.SigninModel
 @{
     ViewData["Title"] = "Signin";
 }
 
-<h1>Signin</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mx-auto mb-5">
+            <div class="card">
+                <div class="card-body">
+                    <form id="account" method="post" asp-area="" asp-controller="Account" asp-action="Signin" asp-antiforgery="true">
+                        <h2>Use a local account to log in.</h2>
+                        <hr />
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="Email" class="form-label"></label>
+                            <input asp-for="Email" class="form-control" autocomplete="username" aria-required="true" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Password" class="form-label"></label>
+                            <input asp-for="Password" class="form-control" autocomplete="current-password" aria-required="true" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div>
+                            <div class="checkbox">
+                                <label asp-for="RememberMe" class="form-label">
+                                    <input class="form-check-input" asp-for="RememberMe" />
+                                    @Html.DisplayNameFor(m => m.RememberMe)
+                                </label>
+                            </div>
+                        </div>
+                        <div>
+                            <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
+                        </div>
+                        <div>
+                            <p>
+                                <a id="forgot-password">Forgot your password?</a>
+                            </p>
+                            <p>
+                                <a asp-area="" asp-controller="Account" asp-action="Signup">Register as a new user</a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
 

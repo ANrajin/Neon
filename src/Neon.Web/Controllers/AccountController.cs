@@ -28,7 +28,7 @@ namespace Neon.Web.Controllers
             _logger = logger;
         }
 
-        public async Task<IActionResult> Signin(string returnUrl = null)
+        public async Task<IActionResult> Signin(string? returnUrl)
         {
             var model = new SigninModel();
             if (!string.IsNullOrEmpty(model.ErrorMessage))
@@ -73,7 +73,7 @@ namespace Neon.Web.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Signup(string returnUrl = null)
+        public async Task<IActionResult> Signup(string? returnUrl)
         {
             var model = new SignupModel
             {
@@ -92,6 +92,7 @@ namespace Neon.Web.Controllers
                 var user = CreateUser();
 
                 await _userStore.SetUserNameAsync(user, model.Email, CancellationToken.None);
+                await _emailStore.SetEmailConfirmedAsync(user, true, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, model.Password);
 
                 if (result.Succeeded)
@@ -106,6 +107,16 @@ namespace Neon.Web.Controllers
                 }
             }
             return View(model);
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public async Task<IActionResult> Signout(string? returnUrl)
+        {
+            await _signInManager.SignOutAsync();
+            _logger.LogInformation("User logged out.");
+
+            return returnUrl is not null ? LocalRedirect(returnUrl)
+                : RedirectToAction(nameof(Signin));
         }
 
         private IdentityUser CreateUser()
