@@ -33,6 +33,12 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
+//enforce route url to be in lowercase
+builder.Services.Configure<RouteOptions>(opt =>
+{
+    opt.LowercaseUrls = true;
+});
+
 //Identity
 builder.Services.Configure<IdentityOptions>(
     opts =>
