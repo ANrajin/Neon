@@ -11,5 +11,7 @@
         public string Description { get; set; }
 
         public DateTime? CreatedDate { get; set; }
+
+        public List<Post> Posts { get; set; }
     }
 }
