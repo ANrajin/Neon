@@ -4,8 +4,7 @@ using Neon.Web.Areas.Admin.Models.CategoryModels;
 
 namespace Neon.Web.Areas.Admin.Controllers
 {
-    [Area("Admin")]
-    public class CategoriesController : Controller
+    public class CategoriesController : BaseController
     {
         private readonly ILifetimeScope _scope;
         private readonly ILogger<CategoriesController> _logger;

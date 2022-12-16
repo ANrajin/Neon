@@ -3,9 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Neon.Web.Areas.Admin.Controllers
 {
-    [Area("Admin")]
-    [Authorize]
-    public class DashboardController : Controller
+    public class DashboardController : BaseController
     {
         public IActionResult Index()
         {
