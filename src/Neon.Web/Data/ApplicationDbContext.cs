@@ -11,6 +11,16 @@ namespace Neon.Web.Data
         {
         }
 
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<Post>()
+                .HasOne<Category>(x => x.Category)
+                .WithMany(x => x.Posts)
+                .OnDelete(DeleteBehavior.SetNull);
+            base.OnModelCreating(builder);
+        }
+
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Post> Posts { get; set; }
     }
 }
