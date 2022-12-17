@@ -1,6 +1,6 @@
 ﻿using Autofac;
 using Neon.Web.Entities;
-using Neon.Web.Services;
+using Neon.Web.Services.Category;
 using static System.Formats.Asn1.AsnWriter;
 
 namespace Neon.Web.Areas.Admin.Models.CategoryModels
