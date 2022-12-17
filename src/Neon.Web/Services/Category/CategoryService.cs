@@ -1,15 +1,13 @@
 ﻿using Neon.Web.Data;
 using Neon.Web.Entities;
 
-namespace Neon.Web.Services
+namespace Neon.Web.Services.Category
 {
-    public class CategoryService : ICategoryService
+    public class CategoryService : Service, ICategoryService
     {
-        private readonly ApplicationDbContext _context;
-
         public CategoryService(ApplicationDbContext context)
+            : base(context)
         {
-            _context = context;
         }
 
         public void CreateCategory(Category entity)

@@ -1,6 +1,6 @@
 ﻿using Neon.Web.Entities;
 
-namespace Neon.Web.Services
+namespace Neon.Web.Services.Category
 {
     public interface ICategoryService
     {
