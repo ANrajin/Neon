@@ -30,8 +30,8 @@ namespace Neon.Web.Areas.Admin.Controllers
         [HttpPost, ValidateAntiForgeryToken]
         public IActionResult Create(PostCreateModel model)
         {
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 model.Resolve(_scope);
 
                 try
@@ -43,7 +43,7 @@ namespace Neon.Web.Areas.Admin.Controllers
                     Console.WriteLine(e);
                     throw;
                 }
-            }
+            //}
             return View();
         }
 

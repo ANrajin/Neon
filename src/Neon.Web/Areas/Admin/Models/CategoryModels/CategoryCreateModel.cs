@@ -1,6 +1,6 @@
 ﻿using Autofac;
 using Neon.Web.Entities;
-using Neon.Web.Services.Category;
+using Neon.Web.Services.CategoryService;
 using Neon.Web.Utilities;
 using System.ComponentModel.DataAnnotations;
 

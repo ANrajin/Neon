@@ -1,4 +1,4 @@
-﻿
+﻿@model Neon.Web.Areas.Admin.Models.PostModels.PostCreateModel
 @{
     ViewData["Title"] = "Create";
 }
@@ -17,10 +17,11 @@
             <div class="col-md-8 mx-auto">
                 <div class="card">
                     <div class="card-body">
-                        <form method="post" asp-area="Admin" asp-controller="Posts" asp-action="Create" asp-antiforgery="true">
+                        <form method="post" asp-area="Admin" asp-controller="Posts" asp-action="Create" asp-antiforgery="true" 
+                            enctype="multipart/form-data">
                             <div class="form-group mb-3">
-                                <label class="form-label">Title</label>
-                                <input class="form-control" type="text"/>
+                                <label asp-for="Title" class="form-label">Title</label>
+                                <input class="form-control" type="text" asp-for="Title"/>
                                 <span></span>
                             </div>
                             <div class="form-group mb-3">
@@ -29,8 +30,8 @@
                                 <span></span>
                             </div>
                             <div class="form-group mb-3">
-                                <label class="form-label">Description</label>
-                                <textarea id="desc"></textarea>
+                                <label asp-for="Description" class="form-label">Description</label>
+                                <textarea id="desc" asp-for="Description"></textarea>
                                 <span></span>
                             </div>
                             <div class="form-check mb-3">
@@ -38,6 +39,10 @@
                                 <label class="form-check-label" for="status">
                                     Publish
                                 </label>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="ImageFile" class="form-label">Image</label>
+                                <input type="file" class="form-control" asp-for="ImageFile"/>
                             </div>
                             <div class="my-2">
                                 <button type="submit" class="btn btn-outline-primary">Save</button>
