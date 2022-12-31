@@ -1,22 +1,23 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace Neon.Web.Data.Migrations
 {
-    public partial class Create_Role_seed : Migration
+    public partial class Add_Role_Seed : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "1C57C706-662C-46E7-8240-839F1A9ACD0C", "e719ef30-2f80-4075-88c4-f60fe98c215b", "Author", "AUTHOR" });
+                values: new object[] { new Guid("1c57c706-662c-46e7-8240-839f1a9acd0c"), "52D1D3ED-4B63-44FD-89B0-7380F49F6DDA", "Author", "AUTHOR" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "CCD9FE14-EF0A-4B7F-9741-E7D968E0AB88", "3af6937b-5d29-4f18-8498-690b147ed17b", "Admin", "ADMIN" });
+                values: new object[] { new Guid("ccd9fe14-ef0a-4b7f-9741-e7d968e0ab88"), "6A6F0469-939D-4F04-84BD-7469C7F84120", "Admin", "ADMIN" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -24,12 +25,12 @@ namespace Neon.Web.Data.Migrations
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "1C57C706-662C-46E7-8240-839F1A9ACD0C");
+                keyValue: new Guid("1c57c706-662c-46e7-8240-839f1a9acd0c"));
 
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "CCD9FE14-EF0A-4B7F-9741-E7D968E0AB88");
+                keyValue: new Guid("ccd9fe14-ef0a-4b7f-9741-e7d968e0ab88"));
         }
     }
 }

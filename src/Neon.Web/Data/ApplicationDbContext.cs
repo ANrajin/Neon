@@ -2,11 +2,13 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Neon.Web.Entities;
+using Neon.Web.Entities.Member;
 using Neon.Web.Seeds;
 
 namespace Neon.Web.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, Role, Guid, UserClaim, 
+        UserRole, UserLogin, RoleClaim, UserToken>, IApplicationDbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -15,7 +17,10 @@ namespace Neon.Web.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<IdentityRole>().HasData(RoleSeed.Roles);
+            builder.Entity<Category>().HasData(CategoriesSeed.Categories);
+            builder.Entity<Role>().HasData(RoleSeed.Roles);
+            builder.Entity<ApplicationUser>().HasData(AdminSeed.Users);
+            builder.Entity<UserRole>().HasData(AdminSeed.UserRole);
             base.OnModelCreating(builder);
         }
 

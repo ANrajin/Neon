@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Neon.Web.Data;
 
@@ -11,9 +12,10 @@ using Neon.Web.Data;
 namespace Neon.Web.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221231163158_Add_Admin_Seed")]
+    partial class Add_Admin_Seed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,32 +50,6 @@ namespace Neon.Web.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreatedDate = new DateTime(2022, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Lorem ipsum",
-                            Title = "Programming Languages",
-                            UrlTitle = "programming-languages"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CreatedDate = new DateTime(2022, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Lorem ipsum",
-                            Title = "SOLID Principles",
-                            UrlTitle = "solid-principles"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CreatedDate = new DateTime(2022, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Lorem ipsum",
-                            Title = "Frameworks",
-                            UrlTitle = "frameworks"
-                        });
                 });
 
             modelBuilder.Entity("Neon.Web.Entities.Member.ApplicationUser", b =>

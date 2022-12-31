@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Neon.Web.Data.Migrations
 {
-    public partial class CreateCategoryTable : Migration
+    public partial class Create_Categories_Table : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

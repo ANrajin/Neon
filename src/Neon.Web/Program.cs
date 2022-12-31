@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Neon.Web;
 using Neon.Web.Data;
+using Neon.Web.Entities.Member;
+using Neon.Web.Services.Member;
 using Serilog;
 using Serilog.Events;
 
@@ -27,11 +29,17 @@ builder.Host.UseSerilog((ctx, lc) => lc
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
+
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddRoles<IdentityRole>()
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+//Custom identity
+builder.Services.AddIdentity<ApplicationUser, Role>()
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddUserManager<UserManager>()
+    .AddRoleManager<RoleManager>()
+    .AddSignInManager<SignInManager>()
+    .AddDefaultTokenProviders();
+
 builder.Services.AddControllersWithViews();
 
 //enforce route url to be in lowercase
@@ -88,8 +96,6 @@ try
     app.MapControllerRoute(
         name: "default",
         pattern: "{controller=Home}/{action=Index}/{id?}");
-
-    app.MapRazorPages();
 
     app.Run();
 }
