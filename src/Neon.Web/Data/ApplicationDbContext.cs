@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Neon.Web.Entities;
+using Neon.Web.Seeds;
 
 namespace Neon.Web.Data
 {
@@ -9,6 +11,12 @@ namespace Neon.Web.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+        }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<IdentityRole>().HasData(RoleSeed.Roles);
+            base.OnModelCreating(builder);
         }
 
         public DbSet<Category> Categories { get; set; }

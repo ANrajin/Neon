@@ -97,6 +97,7 @@ namespace Neon.Web.Controllers
 
                 if (result.Succeeded)
                 {
+                    await _userManager.AddToRoleAsync(user, "Author");
                     _logger.LogInformation("User created a new account with password.");
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return LocalRedirect(model.ReturnUrl);
