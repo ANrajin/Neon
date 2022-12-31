@@ -4,7 +4,6 @@
   <description />
   <settings>
     <options>
-      <option name="checkoutDirectory" value="E:\Teamcity\Neon" />
       <option name="cleanBuild" value="true" />
     </options>
     <parameters />
