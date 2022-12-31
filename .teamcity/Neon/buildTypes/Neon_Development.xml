@@ -4,7 +4,19 @@
   <description />
   <settings>
     <parameters />
-    <build-runners />
+    <build-runners>
+      <runner id="RUNNER_1" name="build" type="dotnet">
+        <parameters>
+          <param name="command" value="build" />
+          <param name="configuration" value="Debug" />
+          <param name="dotNetCoverage.dotCover.home.path" value="%teamcity.tool.JetBrains.dotCover.CommandLineTools.DEFAULT%" />
+          <param name="framework" value="net6.0" />
+          <param name="paths" value="src/Neon.sln" />
+          <param name="required.sdk" value="6" />
+          <param name="teamcity.step.mode" value="default" />
+        </parameters>
+      </runner>
+    </build-runners>
     <vcs-settings>
       <vcs-entry-ref root-id="Neon_Development" />
     </vcs-settings>
