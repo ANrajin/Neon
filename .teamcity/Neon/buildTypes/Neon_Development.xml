@@ -53,6 +53,13 @@
           <param name="vcsRootId" value="Neon_Development" />
         </parameters>
       </extension>
+      <extension id="BUILD_EXT_2" type="notifications">
+        <parameters>
+          <param name="buildFinishedFailure" value="true" />
+          <param name="email" value="rajin.exe@gmail.com" />
+          <param name="notifier" value="email" />
+        </parameters>
+      </extension>
     </build-extensions>
     <cleanup />
   </settings>
