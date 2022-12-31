@@ -3,6 +3,10 @@
   <name>Development</name>
   <description />
   <settings>
+    <options>
+      <option name="checkoutDirectory" value="E:\Teamcity" />
+      <option name="cleanBuild" value="true" />
+    </options>
     <parameters />
     <build-runners>
       <runner id="RUNNER_2" name="Restore" type="dotnet">
