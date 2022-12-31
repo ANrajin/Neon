@@ -46,6 +46,13 @@
           <param name="swabra.processes" value="kill" />
         </parameters>
       </extension>
+      <extension id="BUILD_EXT_1" type="VcsLabeling">
+        <parameters>
+          <param name="labelingPattern" value="build-%system.build.number%" />
+          <param name="successfulOnly" value="true" />
+          <param name="vcsRootId" value="Neon_Development" />
+        </parameters>
+      </extension>
     </build-extensions>
     <cleanup />
   </settings>
